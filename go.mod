@@ -1,6 +1,6 @@
 module github.com/serialt/mqrr
 
-go 1.18
+go 1.21
 
 require (
 	github.com/eclipse/paho.golang v0.11.0
