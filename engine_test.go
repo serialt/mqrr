@@ -2,11 +2,12 @@ package mqrr
 
 import (
 	"context"
+	"testing"
+	"time"
+
 	"github.com/eclipse/paho.golang/paho"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	"time"
 )
 
 var broker = "mqtt://broker-cn.emqx.io:1883"

@@ -2,10 +2,11 @@ package client
 
 import (
 	"context"
-	"github.com/eclipse/paho.golang/autopaho"
-	"github.com/eclipse/paho.golang/paho"
 	"net/url"
 	"sync"
+
+	"github.com/eclipse/paho.golang/autopaho"
+	"github.com/eclipse/paho.golang/paho"
 )
 
 // Client provides a long connection to the MQTT broker,
@@ -86,4 +87,19 @@ func (client *Client) Request(ctx context.Context, pb *paho.Publish) (*paho.Publ
 // Close disconnects the Client and waits for the connection manager to exit.
 func (client *Client) Close(ctx context.Context) error {
 	return client.cm.Disconnect(ctx)
+}
+
+// Set Client cm
+func (client *Client) SetCM(cm *autopaho.ConnectionManager) {
+	client.cm = cm
+}
+
+// Set Client handler
+func (client *Client) SetHandler(handler *Handler) {
+	client.handler = handler
+}
+
+// Set Client handler
+func (client *Client) SetRouter(router paho.Router) {
+	client.router = router
 }

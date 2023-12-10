@@ -1,9 +1,10 @@
 package binder
 
 import (
-	"github.com/go-playground/validator/v10"
 	"reflect"
 	"strconv"
+
+	"github.com/go-playground/validator/v10"
 )
 
 var validate = validator.New()

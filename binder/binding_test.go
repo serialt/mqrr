@@ -2,9 +2,10 @@ package binder
 
 import (
 	"encoding/json"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 var jsonTestData = []byte(`{"name":"john","age":50,"sex":"male"}`)

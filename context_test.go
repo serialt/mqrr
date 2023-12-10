@@ -1,10 +1,11 @@
 package mqrr
 
 import (
+	"testing"
+
 	"github.com/eclipse/paho.golang/paho"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 type contextBinding struct {

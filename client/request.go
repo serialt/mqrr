@@ -2,10 +2,11 @@ package client
 
 import (
 	"context"
-	"github.com/eclipse/paho.golang/autopaho"
-	"github.com/eclipse/paho.golang/paho"
 	"net/url"
 	"sync"
+
+	"github.com/eclipse/paho.golang/autopaho"
+	"github.com/eclipse/paho.golang/paho"
 )
 
 type responsePub struct {

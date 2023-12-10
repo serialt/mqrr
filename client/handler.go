@@ -3,10 +3,11 @@ package client
 import (
 	"context"
 	"fmt"
+	"sync"
+
 	"github.com/eclipse/paho.golang/autopaho"
 	"github.com/eclipse/paho.golang/paho"
 	"github.com/google/uuid"
-	"sync"
 )
 
 // Handler is the struct providing a request/response functionality

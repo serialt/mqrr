@@ -2,12 +2,13 @@ package client
 
 import (
 	"context"
+	"testing"
+	"time"
+
 	"github.com/eclipse/paho.golang/autopaho"
 	"github.com/eclipse/paho.golang/paho"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	"time"
 )
 
 func newMQTTClient() (*autopaho.ConnectionManager, paho.Router, error) {
