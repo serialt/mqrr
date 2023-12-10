@@ -3,15 +3,16 @@ package client
 import (
 	"context"
 	"fmt"
-	"github.com/eclipse/paho.golang/autopaho"
-	"github.com/eclipse/paho.golang/paho"
-	"github.com/koho/mqrr"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"net/url"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/eclipse/paho.golang/autopaho"
+	"github.com/eclipse/paho.golang/paho"
+	"github.com/serialt/mqrr"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 var broker = "mqtt://broker-cn.emqx.io:1883"

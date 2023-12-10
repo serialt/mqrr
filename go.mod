@@ -1,11 +1,11 @@
-module github.com/koho/mqrr
+module github.com/serialt/mqrr
 
 go 1.18
 
 require (
-	github.com/eclipse/paho.golang v0.10.1-0.20220804083941-4df2dcdc8687
+	github.com/eclipse/paho.golang v0.11.0
 	github.com/go-playground/validator/v10 v10.11.0
-	github.com/sirupsen/logrus v1.8.1
+	github.com/google/uuid v1.3.0
 	github.com/stretchr/testify v1.7.0
 )
 
@@ -13,7 +13,6 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
-	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect

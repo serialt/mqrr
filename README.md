@@ -11,7 +11,7 @@ See the [MQTT Request Response](https://www.emqx.com/en/blog/mqtt5-request-respo
 
 ## Installation
 ```shell
-go get github.com/koho/mqrr
+go get github.com/serialt/mqrr
 ```
 
 ## Quick start
@@ -24,7 +24,7 @@ Let's create a simple API server that listens for the `hello` topic.
 package main
 
 import (
-	"github.com/koho/mqrr"
+	"github.com/serialt/mqrr"
 )
 
 func main() {
@@ -41,7 +41,7 @@ func main() {
 In the client side, we publish a message with our name to the `hello` topic, then wait for a response.
 
 ```shell
-go get github.com/koho/mqrr/client
+go get github.com/serialt/mqrr/client
 ```
 
 ```go
@@ -51,7 +51,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/eclipse/paho.golang/paho"
-	"github.com/koho/mqrr/client"
+	"github.com/serialt/mqrr/client"
 )
 
 func main() {

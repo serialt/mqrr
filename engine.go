@@ -2,14 +2,14 @@ package mqrr
 
 import (
 	"context"
-	"github.com/eclipse/paho.golang/autopaho"
-	"github.com/eclipse/paho.golang/paho"
+	"log/slog"
 	"net/url"
 	"path"
-	"reflect"
-	"runtime"
 	"strings"
 	"time"
+
+	"github.com/eclipse/paho.golang/autopaho"
+	"github.com/eclipse/paho.golang/paho"
 )
 
 // Engine is the server instance, it contains the connection manager, router and subscriptions.
@@ -90,14 +90,16 @@ func (engine *Engine) RunCfg(cc autopaho.ClientConfig) {
 	cc.OnConnectionUp = func(manager *autopaho.ConnectionManager, connack *paho.Connack) {
 		// Subscribe all the registered topics
 		if _, err := manager.Subscribe(context.Background(), &paho.Subscribe{Subscriptions: subs}); err != nil {
-			log.Error(err)
+			slog.Error("subscribe failed", "err", err)
+
 		}
 		if onConnectionUp != nil {
 			onConnectionUp(manager, connack)
 		}
 	}
 	cc.OnConnectError = func(err error) {
-		log.Error(err)
+		slog.Error("connect failed", "err", err)
+
 		if onConnectError != nil {
 			onConnectError(err)
 		}
@@ -176,14 +178,14 @@ func (engine *Engine) buildSubscriptions() map[string]paho.SubscribeOptions {
 func (engine *Engine) handleRequest(c *Context, handler func(c *Context)) {
 	defer func() {
 		if err := recover(); err != nil {
-			log.Error(err)
+			slog.Error("Handle request failed", "err", err)
 		}
 	}()
 	// Calling handler function
 	start := time.Now()
 	handler(c)
 	elapsed := time.Since(start)
-	log.Infof("%13v | %#v", elapsed, c.Request.Topic)
+	slog.Info("Handle request", "topic", c.Request.Topic, "elapsed_time", elapsed)
 	// Write response to client
 	if c.Request.Properties.ResponseTopic != "" && len(c.response) > 0 {
 		engine.cm.Publish(context.Background(), &paho.Publish{
@@ -197,10 +199,11 @@ func (engine *Engine) handleRequest(c *Context, handler func(c *Context)) {
 }
 
 func (engine *Engine) printRoute(urls []*url.URL) {
-	for topic, handler := range engine.handlers {
-		debugPrint("%-25s --> %s", topic, runtime.FuncForPC(reflect.ValueOf(handler).Pointer()).Name())
+	for topic := range engine.handlers {
+		slog.Info("MQTT route", "topic", topic)
 	}
-	debugPrint("Listening requests on %v", urls)
+	slog.Info("Listening requests", "url", urls)
+
 }
 
 // Close closes the connection and waits for goroutine to exit.

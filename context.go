@@ -3,9 +3,10 @@ package mqrr
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/eclipse/paho.golang/paho"
-	"github.com/koho/mqrr/binder"
 	"strings"
+
+	"github.com/eclipse/paho.golang/paho"
+	"github.com/serialt/mqrr/binder"
 )
 
 // Context is a data container. It allows us to pass variables across
