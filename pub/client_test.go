@@ -1,4 +1,4 @@
-package client
+package pub
 
 import (
 	"context"
@@ -10,16 +10,16 @@ import (
 
 	"github.com/eclipse/paho.golang/autopaho"
 	"github.com/eclipse/paho.golang/paho"
-	"github.com/serialt/mqrr"
+	"github.com/serialt/mqrr/sub"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 var broker = "mqtt://broker-cn.emqx.io:1883"
 
-func runEchoServer(topic string) *mqrr.Engine {
-	r := mqrr.New()
-	r.Route(topic, func(c *mqrr.Context) {
+func runEchoServer(topic string) *sub.Engine {
+	r := sub.New()
+	r.Route(topic, func(c *sub.Context) {
 		c.String(c.GetRawString())
 	})
 	go r.Run(broker)

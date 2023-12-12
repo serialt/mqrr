@@ -1,4 +1,4 @@
-package client
+package pub
 
 import (
 	"context"

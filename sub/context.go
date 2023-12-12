@@ -1,4 +1,4 @@
-package mqrr
+package sub
 
 import (
 	"encoding/json"
